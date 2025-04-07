@@ -11,10 +11,24 @@
 # Contact:      florian.franz@nw-fva.de
 #---------------------------------------------------------------------------------------
 
-# define input directory to CHM raster files
-input_dir <- r'{K:\lidar\ni\flugzeug\2023\solling_nlf\raster_ndom\daten\kacheln}'
+# file path and name definitions
+#--------------------------------
 
-# read them into one list
+# input directory to CHM raster files
+input_dir <- r'{...}'
+
+# output directory to final CHM raster file
+output_dir <- r'{...}'
+
+# define file name of output CHM
+output_file_name <- '.tif'
+
+# define output layer name
+output_lyr_name <- ''
+
+#--------------------------------
+
+# read CHM input raster files into one list
 chm_files <- list.files(input_dir, pattern = '\\.tif$')
 chms <- lapply(file.path(input_dir, chm_files), terra::rast)
 
@@ -38,8 +52,7 @@ fill.na <- function(x, i=5) {
 w <- matrix(1,3,3)
 chm_merged_filled <- terra::focal(chm_merged, w, fun = fill.na)
 
-# write merged and filled chm to disk
-output_dir <- r'{P:\KfP\Aktiv\KfP_FE\canopy_gap_detection\gap_detection\data\raw_data\nDSMs}'
+# write merged and filled CHM to disk
 terra::writeRaster(chm_merged_filled,
-                   file.path(output_dir, 'chm_solling_2024_als.tif'),
-                   names = 'chm_solling')
+                   file.path(output_dir, output_file_name),
+                   names = output_lyr_name)

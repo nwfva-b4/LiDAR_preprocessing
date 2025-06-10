@@ -3,11 +3,11 @@
 # Description:  This script merges individual raster CHM tiles into one big raster file.
 #               Pixels below 0.1 m are set to 0. NA values are filled.
 #               The resulting CHM is written to disk.
-#               To apply the script, one has just to change the input directory
-#               to the individual CHM tiles (line 15) and the output directory
-#               to which the merged and filled CHM file should be written (line 42).
-#               The name of the output file can be adjusted in line 44
-#               together with the name of the file when it's loaded into R (line 45). 
+#               To apply the script, one has just to set the input directory
+#               to the individual CHM tiles (line 18) and the output directory
+#               to which the merged and filled CHM file should be written (line 21).
+#               The name of the output file can be defined in line 24
+#               together with the name of the file when it's loaded into R (line 27). 
 # Contact:      florian.franz@nw-fva.de
 #---------------------------------------------------------------------------------------
 
